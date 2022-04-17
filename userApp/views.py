@@ -11,7 +11,7 @@ def register(request):
     if request.method == "GET":
         return redirect('/')
     errors = User.objects.validate(request.POST)
-    if errors:
+    if len(errors) > 0:
         for er in errors.values():
             messages.error(request, er)
         return redirect('/')
