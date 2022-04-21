@@ -17,4 +17,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('', include('userApp.urls')),
+    path('recipe', include('recipeApp.urls')),
 ]
