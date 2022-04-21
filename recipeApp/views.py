@@ -10,4 +10,30 @@ def dashboard(request):
     context = {
         'user' : user
     }
-    return render (request, 'dashboard.html', context)
+    return render (request, 'dashboard.html', context )
+
+
+def addForm(request):
+    return render(request, 'addForm.html')
+
+def recipeDetails(request, r_id):
+    context ={
+
+    }
+    return render(request,'showRecipe.html', context)
+
+def updateForm(request, r_id):
+    context = {
+
+    }
+    return render(request,'updateForm.html', context)
+
+def createRecipe(request):
+    pass
+
+def updateRecipe(request):
+    # return redirect('recipe:recipe-details')
+    pass
+
+def deleteRecipe(request):
+    pass

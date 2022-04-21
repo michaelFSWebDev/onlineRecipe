@@ -43,5 +43,5 @@ def success(request):
     context = {
         'user' : LoggedUser.objects.get(id=request.session['user_id'])
     }
-    # return redirect("recipe:recipe-dashboard/{user_id}")
-    return redirect("/recipe")
+    
+    return redirect('recipe:recipe-dashboard')
