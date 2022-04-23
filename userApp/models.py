@@ -53,8 +53,17 @@ class User(models.Model):
 
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
+
+    # unique makes sure no other email is the same
+    # in the database
     email = models.EmailField(unique=True)
+
+    # password is hashed in UserManager by bcrypt
     password = models.CharField(max_length=255)
+
+    # Auto time feild to track
+    create_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 
     objects = UserManager()
