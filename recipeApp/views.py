@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import Recipe as Recipe_id
 from userApp.models import User as LoggedUser
 
 
@@ -14,15 +15,22 @@ def dashboard(request):
 
 
 def addForm(request):
-    return render(request, 'addForm.html')
+    user = LoggedUser.objects.get(id=request.session['user_id'])
+
+    context = {
+    'user' : user
+}
+    return render(request, 'addForm.html', context)
 
 def recipeDetails(request, r_id):
+    recipe_id = Recipe_id.objects.get(id=r_id)
     context ={
-
+        'recipe_id' : Recipe_id
     }
     return render(request,'showRecipe.html', context)
 
 def updateForm(request, r_id):
+    
     context = {
 
     }
