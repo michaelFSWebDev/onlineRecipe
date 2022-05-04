@@ -47,12 +47,13 @@ def createRecipe(request):
     
     return redirect("recipe:recipe-details", recipe.id)
 
-def recipeShowOne(request, recipe_id):
-    pass
+
 
 def updateRecipe(request):
     # return redirect('recipe:recipe-details')
     pass
 
-def deleteRecipe(request):
-    pass
+def deleteRecipe(request, recipe_id):
+    recipe_to_delete = Recipe_id.objects.get(id=recipe_id)
+    recipe_to_delete.delete()
+    return redirect('recipe:recipe-dashboard')
