@@ -3,41 +3,44 @@
       <div class="row">
         <div class="col-md"></div>
         <div class="col-md">
-          <h2>Add your recipe here</h2>        
+          <h1>Recipe Form</h1>        
         </div>
         <div class="col-md"></div>        
       </div>
         <div class="row">
           <div class="col-md"></div>
           <div class="col-md">
-            <form>
+            <form action="{%url 'recipe:recipe-create'%}" method="POST">
+              {% csrf_token %}
               <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="recipe_name">Recipe Name</label>
+                <input type="text" class="form-control" name="recipe_name">
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
+                <label for="recipe_category">Recipe Category</label>
+                <select class="form-control" name="recipe_category">
+                  <option>Appetizer</option>
+                  <option>Quick Bites</option>
+                  <option>Breakfast</option>
+                  <option>Lunch</option>
+                  <option>Dinner</option>
+                  <option>Dessert</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </select>
+                <label for="recipe_desc">Recipe Description</label>
+                <textarea class="form-control" name="recipe_desc" rows="3" placeholder="Please add a description for your recipe..."></textarea>
               </div>
               <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="recipe_ingredient">Ingredient List</label>
+                <textarea class="form-control" name="recipe_ingredient" rows="3" placeholder="Please type name and amounts for now..."></textarea>
+              </div>
+              <div class="form-group">
+                <label for="recipe_instruction">Instructions</label>
+                <textarea class="form-control" name="recipe_instruction" rows="3"></textarea>
+              </div>
+              <div class="r-submit">
+                <button type="submit" >Add your Recipe</button>
               </div>
             </form>
           </div>

@@ -9,7 +9,8 @@ def dashboard(request):
         return redirect('/')
     user = LoggedUser.objects.get(id=request.session['user_id'])
     context = {
-        'user' : user
+        'user' : user,
+        'recipe': Recipe_id.objects.all()
     }
     return render (request, 'dashboard.html', context )
 
@@ -22,14 +23,14 @@ def addForm(request):
 }
     return render(request, 'addForm.html', context)
 
-def recipeDetails(request, r_id):
-    recipe_id = Recipe_id.objects.get(id=r_id)
+def recipeDetails(request, recipe_id):
+    
     context ={
-        'recipe_id' : Recipe_id
+        'oneRecipe' : Recipe_id.objects.get(id=recipe_id)
     }
     return render(request,'showRecipe.html', context)
 
-def updateForm(request, r_id):
+def updateForm(request, recipe_id):
     
     context = {
 
@@ -37,6 +38,16 @@ def updateForm(request, r_id):
     return render(request,'updateForm.html', context)
 
 def createRecipe(request):
+    user = LoggedUser.objects.get(id=request.session['user_id'])
+    recipe = Recipe_id.objects.create(recipe_name=request.POST['recipe_name'],
+    recipe_category=request.POST['recipe_category'],
+    recipe_desc=request.POST['recipe_desc'],
+    recipe_ingredient=request.POST['recipe_ingredient'],
+    recipe_instruction=request.POST['recipe_instruction'], author=user)
+    
+    return redirect("recipe:recipe-details", recipe.id)
+
+def recipeShowOne(request, recipe_id):
     pass
 
 def updateRecipe(request):
