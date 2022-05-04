@@ -20,14 +20,13 @@
           <li class="nav-item">
             <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Item 2</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Item 2</a>
-          </li>
-          {% if 'user' not in session %}
-
-          {% else %}
+          {% if 'user_id' in request.session %}
           <li class="nav-item">
             <a class="nav-link active" href="{% url 'user-logout' %}" tabindex="-1" aria-disabled="true">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Item 2</a>
           </li>
           {% endif %}
         </nav>

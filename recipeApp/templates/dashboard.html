@@ -27,6 +27,7 @@
               <td>{{recipe.recipe_category}}</td>
               <td>{{recipe.recipe_desc}}</td>
               <td>{{recipe.recipe_author.first_name}}</td>
+              
               <td><a href="{% url 'recipe:recipe-delete' recipe_id=recipe.id %}">Delete</a></td>
             </tr>
             {% endfor %}
