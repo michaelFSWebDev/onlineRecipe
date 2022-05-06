@@ -33,6 +33,7 @@ def recipeDetails(request, recipe_id):
 def updateForm(request, recipe_id):
     
     context = {
+        'recipe' : Recipe_id.objects.get(id=recipe_id)
 
     }
     return render(request,'updateForm.html', context)
@@ -43,7 +44,7 @@ def createRecipe(request):
     recipe_category=request.POST['recipe_category'],
     recipe_desc=request.POST['recipe_desc'],
     recipe_ingredient=request.POST['recipe_ingredient'],
-    recipe_instruction=request.POST['recipe_instruction'], author=user)
+    recipe_instruction=request.POST['recipe_instruction'], recipe_author=user)
     
     return redirect("recipe:recipe-details", recipe.id)
 

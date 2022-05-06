@@ -1,19 +1,56 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Heavenly Made Goodies</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html' %}
+{% block content %}
 
-    <!-- Bootstrap CSS v5.0.2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="row">
+  <div class="col-md"></div>
+  <div class="col-md">
+    <h1>Recipe Form</h1>        
+  </div>
+  <div class="col-md"></div>        
+</div>
+  <div class="row">
+    <div class="col-md"></div>
+    <div class="col-md">
+      <form action="{%url 'recipe:recipe-update' recipe_id=recipe.id %}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="recipe_name">Recipe Name</label>
+          <input type="text" value= 'recipe.recipe_name' class="form-control" name="recipe_name">
+        </div>
+        <div class="form-group">
+          <label for="recipe_category">Recipe Category</label>
+          <select value= "recipe_category" class="form-control" name="recipe_category">
+            <option>Appetizer</option>
+            <option>Quick Bites</option>
+            <option>Breakfast</option>
+            <option>Lunch</option>
+            <option>Dinner</option>
+            <option>Dessert</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="recipe_desc">Recipe Description</label>
+          <textarea value= "recipe_desc" class="form-control" name="recipe_desc" rows="3" ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="recipe_ingredient">Ingredient List</label>
+          <textarea value= "recipe_ingredient" class="form-control" name="recipe_ingredient" rows="3" placeholder="Please type name and amounts for now..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="recipe_instruction">Instructions</label>
+          <textarea value= "recipe_instruction" class="form-control" name="recipe_instruction" rows="3"></textarea>
+        </div>
+        <div class="r-submit">
+          <button type="submit" >Add your Recipe</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-md"></div>
 
-  </head>
-  <body>
-      <h1>Update your Recipe!</h1>
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-  </body>
-</html>
+  </div>
+  
+</div>
+<!-- Bootstrap JavaScript Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+{% endblock %}

@@ -23,12 +23,18 @@
           <tbody>
             {% for recipe in recipe %}
             <tr>
-              <th scope="row"><a href="{% url 'recipe:recipe-details' recipe_id=recipe.id %}">{{recipe.recipe_name}}</a></th>
+              <th scope="row">{{recipe.recipe_name}}</th>
               <td>{{recipe.recipe_category}}</td>
               <td>{{recipe.recipe_desc}}</td>
               <td>{{recipe.recipe_author.first_name}}</td>
-              
-              <td><a href="{% url 'recipe:recipe-delete' recipe_id=recipe.id %}">Delete</a></td>
+              <td>
+                {% if user != recipe.recipe_author %}
+                <a href="{% url 'recipe:recipe-details' recipe_id=recipe.id %}">Details</a>
+                {% else %}
+                <a href="{% url 'recipe:recipe-updatepage' recipe_id=recipe.id %}">Update</a>
+                <a href="{% url 'recipe:recipe-delete' recipe_id=recipe.id %}">Delete</a>
+                {% endif %}
+              </td>
             </tr>
             {% endfor %}
           </tbody>
