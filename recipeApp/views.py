@@ -46,6 +46,9 @@ def createRecipe(request):
     recipe_ingredient=request.POST['recipe_ingredient'],
     recipe_instruction=request.POST['recipe_instruction'], recipe_author=user)
     
+    # Add the recipe as a favorite of the creator automatically
+    user.favorited_recipes.add(recipe)
+
     return redirect("recipe:recipe-details", recipe.id)
 
 
@@ -64,6 +67,19 @@ def updateRecipe(request, recipe_id):
     # Redirect to details page 'app_name:named_path', named_argument 
     return redirect('recipe:recipe-details', recipe_id)
     
+
+def favoriteRecipe(request, recipe_id):
+    user = LoggedUser.objects.get(id=request.session['user_id'])
+    recipe = Recipe_id.objects.get(id=recipe_id)
+    user.favorited_recipes.add(recipe)
+    return ("recipe:recipe-details", recipe.id)
+
+def unfavoriteRecipe(request, recipe_id):
+    user = LoggedUser.objects.get(id=request.session['user_id'])
+    recipe = Recipe_id.objects.get(id=recipe_id)
+    user.favorited_recipes.remove(recipe)
+    return ("recipe:recipe-details", recipe.id)
+
 
 def deleteRecipe(request, recipe_id):
     recipe_to_delete = Recipe_id.objects.get(id=recipe_id)
