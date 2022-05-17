@@ -15,11 +15,11 @@
         {% csrf_token %}
         <div class="form-group">
           <label for="recipe_name">Recipe Name</label>
-          <input type="text" value= 'recipe.recipe_name' class="form-control" name="recipe_name">
+          <input type="text" value= '{{recipe.recipe_name}}' class="form-control" name="recipe_name">
         </div>
         <div class="form-group">
           <label for="recipe_category">Recipe Category</label>
-          <select value= "recipe_category" class="form-control" name="recipe_category">
+          <select value= "{{recipe_category}}" class="form-control" name="recipe_category">
             <option>Appetizer</option>
             <option>Quick Bites</option>
             <option>Breakfast</option>
@@ -30,15 +30,15 @@
         </div>
         <div class="form-group">
           <label for="recipe_desc">Recipe Description</label>
-          <textarea value= "recipe_desc" class="form-control" name="recipe_desc" rows="3" ></textarea>
+          <textarea value= "{{recipe.recipe_desc}}" class="form-control" name="recipe_desc" rows="3" placeholder="Please add a description for your recipe..." >{{recipe.recipe_desc}}</textarea>
         </div>
         <div class="form-group">
           <label for="recipe_ingredient">Ingredient List</label>
-          <textarea value= "recipe_ingredient" class="form-control" name="recipe_ingredient" rows="3" placeholder="Please type name and amounts for now..."></textarea>
+          <textarea value= "{{recipe.recipe_ingredient}}" class="form-control" name="recipe_ingredient" rows="3" placeholder="Please type name and amounts for now...">{{recipe.recipe_ingredient}}</textarea>
         </div>
         <div class="form-group">
           <label for="recipe_instruction">Instructions</label>
-          <textarea value= "recipe_instruction" class="form-control" name="recipe_instruction" rows="3"></textarea>
+          <textarea value= "{{recipe.recipe_instruction}}" class="form-control" name="recipe_instruction" rows="3">{{recipe.recipe_instruction}}</textarea>
         </div>
         <div class="r-submit">
           <button type="submit" >Add your Recipe</button>
