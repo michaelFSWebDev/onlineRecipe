@@ -21,6 +21,9 @@ class Recipe(models.Model):
     recipe_author = models.ForeignKey(UserApp, related_name="recipes", 
     on_delete= models.CASCADE)
 
+    # Many to Many feild to add a recipe to a user that likes it
+    favorited_by = models.ManyToManyField(UserApp, related_name="favorited_recipes")
+
     # Auto time feild to track
     create_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
